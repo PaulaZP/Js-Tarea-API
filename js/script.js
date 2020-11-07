@@ -1,10 +1,3 @@
-//
-// Lista de tareas
-//
-
-//
-// Modelo.
-//
 // Lista de tareas (Array).
 let tareas = [];
 
@@ -47,9 +40,9 @@ function taskStatus(id, complete) {
     if(tareas[i]._id === id){
       tareas[i].complete = complete;
       task = tareas[i];
-      break
+      break;
     }
-  }
+  };
 
   const fetchoptions = {
     method:'PUT', //Nombre de los metodos en mayusucla siempre/
@@ -58,7 +51,6 @@ function taskStatus(id, complete) {
   fetch(`https://js2-tareas-api.netlify.app/api/tareas/${id}?uid=29`, fetchoptions)
     .then((response) => response.json())
     .then((data)=> {
-      appendTaskDOM(data);
     });
 }
 
@@ -67,16 +59,16 @@ function deleteTask(id) {
   for(let i = 0; tareas.length; i++){
     if(tareas[i]._id === id){
       tareas.splice(i,1);
-      break
+      break;
     }
-  }  
+  };  
   const fetchoptions = {
     method:'DELETE', //Nombre de los metodos en mayusucla siempre/
   };
   fetch(`https://js2-tareas-api.netlify.app/api/tareas/${id}?uid=29`, fetchoptions)
     .then((response) => response.json())
     .then((data)=> {
-      appendTaskDOM(data);
+      console.log(data);
     });
 }
 
